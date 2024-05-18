@@ -22,5 +22,9 @@
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/elchris95x1/lernify.git",
+  "author": "Christian Lara <Christian.Lara@ibm.com>",
+  "license": "MIT"
 }
