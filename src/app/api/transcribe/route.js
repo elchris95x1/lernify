@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import {GetObjectCommand, S3Client} from "@aws-sdk/client-s3";
 import {GetTranscriptionJobCommand, StartTranscriptionJobCommand, TranscribeClient} from "@aws-sdk/client-transcribe";
 
@@ -108,3 +109,8 @@ function getClient() {
   
     return Response.json(null);
   }
+=======
+export async function GET(req){
+    return Response.json('ok');
+}
+>>>>>>> Stashed changes
