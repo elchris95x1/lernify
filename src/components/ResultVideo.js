@@ -3,11 +3,9 @@ import {transcriptionItemsToSrt} from "@/libs/awsTranscriptionHelpers";
 import {FFmpeg} from "@ffmpeg/ffmpeg";
 import {toBlobURL, fetchFile} from "@ffmpeg/util";
 import {useEffect, useState, useRef} from "react";
-import roboto from './../fonts/Roboto-Regular.ttf';
-import robotoBold from './../fonts/Roboto-Bold.ttf';
 
 export default function ResultVideo({filename,transcriptionItems}) {
-  const videoUrl = "https://dawid-epic-captions.s3.amazonaws.com/"+filename;
+  const videoUrl = "https://elchris95x1-lernify.s3.amazonaws.com/"+filename;
   const [loaded, setLoaded] = useState(false);
   const [primaryColor, setPrimaryColor] = useState('#FFFFFF');
   const [outlineColor, setOutlineColor] = useState('#000000');
@@ -27,8 +25,6 @@ export default function ResultVideo({filename,transcriptionItems}) {
       coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
       wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
     });
-    await ffmpeg.writeFile('/tmp/roboto.ttf', await fetchFile(roboto));
-    await ffmpeg.writeFile('/tmp/roboto-bold.ttf', await fetchFile(robotoBold));
     setLoaded(true);
   }
 
@@ -60,7 +56,7 @@ export default function ResultVideo({filename,transcriptionItems}) {
     await ffmpeg.exec([
       '-i', filename,
       '-preset', 'ultrafast',
-      '-vf', `subtitles=subs.srt:fontsdir=/tmp:force_style='Fontname=Roboto Bold,FontSize=30,MarginV=70,PrimaryColour=${toFFmpegColor(primaryColor)},OutlineColour=${toFFmpegColor(outlineColor)}'`,
+      '-vf', `subtitles=subs.srt:fontsdir=/tmp:force_style=,FontSize=30,MarginV=70,PrimaryColour=${toFFmpegColor(primaryColor)},OutlineColour=${toFFmpegColor(outlineColor)}'`,
       'output.mp4'
     ]);
     const data = await ffmpeg.readFile('output.mp4');
