@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SparklesIcon from "../components/SparklesIcon";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,11 @@ export default function RootLayout({ children }) {
           <SparklesIcon/>
           <span>Lernify</span>
         </a>
-        <nav className="flex gap-6 text-white/80">
-          <a href="">Home</a>
-          <a href="">Pricing</a>
-          <a href="">Contact</a>
-        </nav>
+        <nav className="flex items-center gap-2 sm:gap-6 text-white/80 text-sm sm:text-bas">
+              <Link href="/">Home</Link>
+              <Link href="/pricing">Pricing</Link>
+              <a href="mailto:christian.lara@ibm.com">Contact</a>
+            </nav>
       </header>
           {children}
         </main>
