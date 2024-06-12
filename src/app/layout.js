@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Lernify",
-  description: "AI Generated earnig Materials From Video",
+  description: "AI Generated learnig Materials From Video",
 };
 
 export default function RootLayout({ children }) {
